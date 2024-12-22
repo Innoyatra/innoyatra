@@ -115,7 +115,13 @@ export default function ServicesSection() {
                                         : "border-gray-100"
                                 )}
                             >
-                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                                <div
+                                    id="orange-circle-border"
+                                    className={cn(
+                                        "w-12 h-12 rounded-full flex items-center justify-center mb-4",
+                                        current === index ? "border-orange-500 border-2" : "border-gray-300 border-2"
+                                    )}
+                                >
                                     {service.icon}
                                 </div>
                                 <h3
