@@ -145,9 +145,23 @@ export default function ServicesSection() {
                             />
                         ))}
                     </div>
-                    <div className="text-sm text-muted-foreground absolute bottom-4 right-4">
-                        {String(current + 1).padStart(2, '0')} — {String(services.length).padStart(2, '0')}
+                    <div className="text-sm font-medium text-muted-foreground absolute bottom-4 right-12 flex items-center gap-2">
+                        <span>
+                            {String(current + 1).padStart(2, '0')}
+                        </span>
+                        <div className="relative w-28 h-1 bg-gray-100 rounded-full overflow-hidden">
+                            <div
+                                className="absolute top-0 left-0 h-full bg-orange-500 transition-all duration-300"
+                                style={{
+                                    width: `${((current + 1) / services.length) * 100}%`,
+                                }}
+                            ></div>
+                        </div>
+                        <span>
+                            {String(services.length).padStart(2, '0')}
+                        </span>
                     </div>
+
                 </div>
             </Carousel>
         </section>
