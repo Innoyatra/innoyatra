@@ -19,29 +19,14 @@ interface Service {
 
 const services: Service[] = [
     {
-        icon: <Smartphone className="h-6 w-6 text-primary" />,
-        title: "Mobile App Development",
-        description: "A Website is an extension of yourself and we can help you to express it properly. Your website is your number one marketing asset because we live in a digital age.",
-    },
-    {
         icon: <Code className="h-6 w-6 text-primary" />,
         title: "Web Design & Development",
-        description: "A Website is an extension of yourself and we can help you to express it properly. Your website is your number one marketing asset because we live in a digital age.",
-    },
-    {
-        icon: <TestTube className="h-6 w-6 text-primary" />,
-        title: "Software Testing Service",
         description: "A Website is an extension of yourself and we can help you to express it properly. Your website is your number one marketing asset because we live in a digital age.",
     },
     {
         icon: <Laptop className="h-6 w-6 text-primary" />,
         title: "Software Testing",
         description: "A Website is an extension of yourself and we can help you to express it properly. Your website is your number one marketing asset because we live in a digital age.",
-    },
-    {
-        icon: <ShoppingCart className="h-6 w-6 text-primary" />,
-        title: "E-commerce Solutions",
-        description: "Build seamless online shopping experiences with customizable e-commerce platforms tailored to your business needs.",
     },
     {
         icon: <Database className="h-6 w-6 text-primary" />,
@@ -54,29 +39,9 @@ const services: Service[] = [
         description: "Protect your systems and data with advanced cybersecurity measures to safeguard against digital threats.",
     },
     {
-        icon: <BarChart className="h-6 w-6 text-primary" />,
-        title: "Data Analytics & Insights",
-        description: "Transform raw data into actionable insights to drive informed decision-making for your business.",
-    },
-    {
         icon: <Cloud className="h-6 w-6 text-primary" />,
         title: "Cloud Computing",
         description: "Migrate and manage your business applications in the cloud to enhance scalability and efficiency.",
-    },
-    {
-        icon: <Brush className="h-6 w-6 text-primary" />,
-        title: "Graphic Design",
-        description: "Create visually stunning and engaging designs to elevate your brand's identity and marketing materials.",
-    },
-    {
-        icon: <Mic className="h-6 w-6 text-primary" />,
-        title: "Voice Assistant Integration",
-        description: "Develop solutions that integrate seamlessly with voice assistants like Alexa and Google Assistant.",
-    },
-    {
-        icon: <PieChart className="h-6 w-6 text-primary" />,
-        title: "Market Research",
-        description: "Gain insights into your target audience and market trends to stay ahead in the competition.",
     },
 ]
 
@@ -93,83 +58,85 @@ export default function ServicesSection() {
     }, [api])
 
     return (
-        <section id="services" className="container py-24 mx-auto max-w-7xl font-inter">
+        <section id="services" className="relative py-16 bg-[#F9F9FF] font-inter shadow-md border-t-2">
             <h2 className="text-3xl font-bold text-center mb-12">Services we offer</h2>
 
-            <Carousel
-                opts={{
-                    align: "center",
-                    loop: true,
-                }}
-                className="w-full"
-                setApi={setApi}
-            >
-                <CarouselContent>
-                    {services.map((service, index) => (
-                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pb-20">
-                            <Card
-                                className={cn(
-                                    "p-6 h-full bg-white transition-all transform",
-                                    current === index
-                                        ? "border-orange-500 border-2 translate-y-11 "
-                                        : "border-gray-100"
-                                )}
-                            >
-                                <div
-                                    id="orange-circle-border"
+            <div className="relative w-full">
+                <Carousel
+                    opts={{
+                        align: "center",
+                        loop: true,
+                    }}
+                    className="w-full"
+                    setApi={setApi}
+                >
+                    <CarouselContent>
+                        {services.map((service, index) => (
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pb-20">
+                                <Card
                                     className={cn(
-                                        "w-12 h-12 rounded-full flex items-center justify-center mb-4",
-                                        current === index ? "border-orange-500 border-2" : "border-gray-300 border-2"
+                                        "p-6 h-full bg-white mx-4 transition-all transform",
+                                        current === index
+                                            ? "border-orange-500 border-2 translate-y-11 "
+                                            : "border-gray-100"
                                     )}
                                 >
-                                    {service.icon}
-                                </div>
-                                <h3
-                                    id="orange-title-text"
-                                    className={cn(
-                                        "text-xl font-semibold mb-2",
-                                        current === index ? "text-orange-500" : ""
-                                    )}
-                                >
-                                    {service.title}
-                                </h3>
-                                <p className="text-muted-foreground">{service.description}</p>
-                            </Card>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <div className="flex flex-col items-center mt-8">
-                    <div className="flex gap-2 justify-center mb-4">
-                        {services.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => api?.scrollTo(index)}
-                                className={cn(
-                                    "w-3 h-3 rounded-full border-2",
-                                    current === index ? "bg-orange-500 border-none scale-150" : "border-gray-300 scale-125"
-                                )}
-                            />
+                                    <div
+                                        id="orange-circle-border"
+                                        className={cn(
+                                            "w-12 h-12 rounded-full flex items-center justify-center mb-4",
+                                            current === index ? "border-orange-500 border-2" : "border-gray-300 border-2"
+                                        )}
+                                    >
+                                        {service.icon}
+                                    </div>
+                                    <h3
+                                        id="orange-title-text"
+                                        className={cn(
+                                            "text-xl font-semibold mb-2 text-gray-700",
+                                            current === index ? "text-orange-500" : ""
+                                        )}
+                                    >
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-gray-700">{service.description}</p>
+                                </Card>
+                            </CarouselItem>
                         ))}
-                    </div>
-                    <div className="text-sm font-medium text-muted-foreground absolute bottom-4 right-12 flex items-center gap-2">
-                        <span>
-                            {String(current + 1).padStart(2, '0')}
-                        </span>
-                        <div className="relative w-28 h-1 bg-gray-100 rounded-full overflow-hidden">
-                            <div
-                                className="absolute top-0 left-0 h-full bg-orange-500 transition-all duration-300"
-                                style={{
-                                    width: `${((current + 1) / services.length) * 100}%`,
-                                }}
-                            ></div>
+                    </CarouselContent>
+                    <div className="flex flex-col items-center mt-8">
+                        <div className="flex gap-2 justify-center mb-4">
+                            {services.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => api?.scrollTo(index)}
+                                    className={cn(
+                                        "w-3 h-3 rounded-full border-2",
+                                        current === index ? "bg-orange-500 border-none scale-150" : "border-gray-300 scale-125"
+                                    )}
+                                />
+                            ))}
                         </div>
-                        <span>
-                            {String(services.length).padStart(2, '0')}
-                        </span>
-                    </div>
+                        <div className="text-sm font-medium absolute bottom-4 right-12 flex items-center gap-2">
+                            <span>
+                                {String(current + 1).padStart(2, '0')}
+                            </span>
+                            <div className="relative w-28 h-1 bg-gray-100 rounded-full overflow-hidden">
+                                <div
+                                    className="absolute top-0 left-0 h-full bg-orange-500 transition-all duration-300"
+                                    style={{
+                                        width: `${((current + 1) / services.length) * 100}%`,
+                                    }}
+                                ></div>
+                            </div>
+                            <span>
+                                {String(services.length).padStart(2, '0')}
+                            </span>
+                        </div>
 
-                </div>
-            </Carousel>
+                    </div>
+                </Carousel>
+            </div>
         </section>
     )
 }
