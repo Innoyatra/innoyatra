@@ -8,7 +8,7 @@ import {
     CarouselItem,
     type CarouselApi,
 } from "@/components/ui/carousel"
-import { Smartphone, Code, TestTube, Laptop, ShoppingCart, Database, Shield, BarChart, Cloud, Brush, Mic, PieChart } from "lucide-react";
+import { Code, Laptop, Database, Shield, Cloud } from "lucide-react";
 import { cn } from "@/lib/utils"
 
 interface Service {
