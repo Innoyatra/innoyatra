@@ -47,9 +47,60 @@ const services: Service[] = [
     },
 ]
 
+const pageContents = [
+    {
+        leadingCompanies: {
+            title: "Leading companies trust us",
+            subtitle: "to develop software",
+            description: "We <span class=\"text-orange-500\">add development capacity</span> to tech teams. Our value isn't limited to building teams but is equally distributed across the project lifecycle. We are a custom software development company that guarantees the successful delivery of your project.",
+            linkText: "See more Informations",
+            image: "/Abou-us-Video.svg"
+        },
+        meetPeople: {
+            title: "Meet the People",
+            subtitle: "We are Working With"
+        }
+    },
+    {
+        leadingCompanies: {
+            title: "Innovative solutions",
+            subtitle: "for modern businesses",
+            description: "Our team of experts delivers <span class=\"text-orange-500\">cutting-edge technology</span> solutions. We focus on creating scalable and efficient software that drives business growth and enhances user experiences.",
+            linkText: "Explore our solutions",
+            image: "/Abou-us-Video.svg"
+        },
+        meetPeople: {
+            title: "Our Expert Team",
+            subtitle: "Driving Your Success"
+        }
+    },
+    {
+        leadingCompanies: {
+            title: "Transforming ideas",
+            subtitle: "into digital reality",
+            description: "We specialize in <span class=\"text-orange-500\">turning concepts into functional software</span>. Our agile development process ensures that your vision is realized efficiently, with regular updates and flexibility to adapt to changing needs.",
+            linkText: "Start your project",
+            image: "/Abou-us-Video.svg"
+        },
+        meetPeople: {
+            title: "Collaborative Approach",
+            subtitle: "Building Together"
+        }
+    }
+]
+
 export default function ServicesSection() {
     const [current, setCurrent] = React.useState(0)
     const [api, setApi] = React.useState<CarouselApi>()
+    const [currentPage, setCurrentPage] = React.useState(0)
+
+    const nextPage = () => {
+        setCurrentPage((prev) => (prev + 1) % pageContents.length)
+    }
+
+    const prevPage = () => {
+        setCurrentPage((prev) => (prev - 1 + pageContents.length) % pageContents.length)
+    }
 
     React.useEffect(() => {
         if (!api) return
@@ -58,6 +109,9 @@ export default function ServicesSection() {
             setCurrent(api.selectedScrollSnap())
         })
     }, [api])
+
+
+    const currentContent = pageContents[currentPage]
 
     return (
         <section id="services" className="bg-white relative font-inter">
@@ -142,64 +196,79 @@ export default function ServicesSection() {
                 </div>
             </div>
 
-            {/* Leading Companies Section */}
-            <div className="grid grid-cols-1 bg-white lg:grid-cols-2 gap-16 items-center mt-32">
-                <div className="ml-32 space-y-8">
-                    <div className="w-16 h-1 bg-orange-500" />
-                    <h2 className="text-5xl font-medium space-y-3">
-                        <div>Leading companies trust us</div>
-                        <div className="font-bold">to develop software</div>
-                    </h2>
-                    <p className="text-gray-600 leading-relaxed text-lg mr-16">
-                        We <span className="text-orange-500">add development capacity</span> to tech teams. Our value isn't limited to building teams but is equally distributed across the project lifecycle. We are a custom software development company that guarantees the successful delivery of your project.
-                    </p>
-                    <Link
-                        href="#"
-                        className="inline-flex items-center text-orange-500 hover:opacity-90 transition-opacity text-lg"
-                    >
-                        See more Informations
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                </div>
-                <div className="mr-32 mt-32 relative aspect-video">
-                    <Image
-                        src="Ellipse181.svg"
-                        alt="Decorative circle"
-                        width={80}
-                        height={80}
-                        className="absolute -top-10 -left-10"
-                    />
-                    <Image
-                        src="Ellipse181.svg"
-                        alt="Decorative circle"
-                        width={80}
-                        height={80}
-                        className="absolute -bottom-10 -right-10"
-                    />
-                    <Image
-                        src="Abou-us-Video.svg"
-                        alt="Team working together"
-                        fill
-                        className="object-cover rounded-2xl"
-                    />
-                </div>
-
+            <div className="ml-40 relative">
+                <Image
+                    src="HalfEclipse.svg"
+                    alt="Decorative circle"
+                    width={80}
+                    height={80}
+                    className="absolute -left-10"
+                />
             </div>
 
-            {/* Meet the People Section */}
-            <div className="bg-white ml-32 mb-32 mt-32">
-                <div className="w-16 h-1 bg-orange-500 mb-8" />
-                <div className="bg-white space-y-3 mb-12">
-                    <h3 className="text-5xl">Meet the People</h3>
-                    <h2 className="text-5xl font-bold">We are Working With</h2>
+            <div>
+                {/* Leading Companies Section */}
+                <div className="grid grid-cols-1 bg-white lg:grid-cols-2 gap-16 items-center mt-32">
+                    <div className="ml-32 space-y-8">
+                        <div className="w-16 h-1 bg-orange-500" />
+                        <h2 className="text-5xl font-medium space-y-3">
+                            <div>{currentContent.leadingCompanies.title}</div>
+                            <div className="font-bold">{currentContent.leadingCompanies.subtitle}</div>
+                        </h2>
+                        <p
+                            className="text-gray-600 leading-relaxed text-lg mr-16"
+                            dangerouslySetInnerHTML={{ __html: currentContent.leadingCompanies.description }}
+                        />
+                        <Link
+                            href="#"
+                            className="inline-flex items-center text-orange-500 hover:opacity-90 transition-opacity text-lg duration-300"
+                        >
+                            {currentContent.leadingCompanies.linkText}
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
+                    </div>
+                    <div className="mr-32 mt-32 relative aspect-video">
+                        <Image
+                            src="/Ellipse181.svg"
+                            alt="Decorative circle"
+                            width={80}
+                            height={80}
+                            className="absolute -top-10 -left-10"
+                        />
+                        <Image
+                            src="/Ellipse181.svg"
+                            alt="Decorative circle"
+                            width={80}
+                            height={80}
+                            className="absolute -bottom-10 -right-10"
+                        />
+                        <Image
+                            src={currentContent.leadingCompanies.image}
+                            alt="Team working together"
+                            fill
+                            className="object-cover rounded-2xl"
+                        />
+                        <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-5 hover:bg-orange-600 transition-colors z-20">
+                            <Play className="h-8 w-8 text-white" fill="white" />
+                        </button>
+                    </div>
                 </div>
-                <div className="flex justify-end gap-6 mt-12 mr-28">
-                    <button className="h-14 w-14 rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                        <ArrowRight className="h-6 w-6 rotate-180" />
-                    </button>
-                    <button className="h-14 w-14 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-500/90 transition-colors">
-                        <ArrowRight className="h-6 w-6 text-white" />
-                    </button>
+
+                {/* Meet the People Section */}
+                <div className="bg-white ml-32 mb-32 mt-32">
+                    <div className="w-16 h-1 bg-orange-500 mb-8" />
+                    <div className="bg-white space-y-3 mb-12">
+                        <h3 className="text-5xl">{currentContent.meetPeople.title}</h3>
+                        <h2 className="text-5xl font-bold">{currentContent.meetPeople.subtitle}</h2>
+                    </div>
+                    <div className="flex justify-end gap-6 mt-12 mr-28">
+                        <button onClick={prevPage} className="h-14 w-14 rounded-full border-2 border-orange-500 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                            <ArrowRight className="h-6 w-6 rotate-180 text-orange-500" />
+                        </button>
+                        <button onClick={nextPage} className="h-14 w-14 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-500/90 transition-colors">
+                            <ArrowRight className="h-6 w-6 text-white" />
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
