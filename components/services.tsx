@@ -187,13 +187,13 @@ export default function ServicesSection() {
             </div>
 
             {/* Meet the People Section */}
-            <div className="bg-white ml-32 mb-32">
+            <div className="bg-white ml-32 mb-32 mt-32">
                 <div className="w-16 h-1 bg-orange-500 mb-8" />
                 <div className="bg-white space-y-3 mb-12">
                     <h3 className="text-5xl">Meet the People</h3>
                     <h2 className="text-5xl font-bold">We are Working With</h2>
                 </div>
-                <div className="flex justify-end gap-6 mt-12">
+                <div className="flex justify-end gap-6 mt-12 mr-28">
                     <button className="h-14 w-14 rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors">
                         <ArrowRight className="h-6 w-6 rotate-180" />
                     </button>
