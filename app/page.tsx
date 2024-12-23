@@ -7,7 +7,7 @@ export default function Home() {
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className="font-inter">
         <section id="hero"></section>
         <section id="services">
           <ServicesSection />
