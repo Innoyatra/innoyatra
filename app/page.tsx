@@ -1,6 +1,7 @@
-import Navbar from "@/components/navbar";
 import Image from 'next/image'
 import Link from "next/link";
+
+import Navbar from "@/components/navbar";
 import ServicesSection from "@/components/services";
 
 export default function Home() {
@@ -43,7 +44,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-0 left-1/3 transform -translate-x-1/2">
             <Image
-              src="Ellipse182.svg"
+              src="/Ellipse182.svg"
               alt="Decorative element"
               width={80}
               height={80}
