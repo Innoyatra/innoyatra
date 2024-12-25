@@ -1,8 +1,42 @@
 import Image from 'next/image'
 import Link from "next/link";
-
+import { Card, CardContent } from "@/components/ui/card"
+import { Code, Rocket, Shield, CheckSquare, Share2, TestTube2 } from 'lucide-react'
 import Navbar from "@/components/navbar";
 import ServicesSection from "@/components/services";
+
+const developmentApproaches = [
+  {
+    icon: <Rocket className="w-8 h-8 text-rose-500" />,
+    title: "UX Driven Engineering",
+    description: "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code."
+  },
+  {
+    icon: <Code className="w-8 h-8 text-blue-500" />,
+    title: "Developing Shared Understanding",
+    description: "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code."
+  },
+  {
+    icon: <Share2 className="w-8 h-8 text-pink-500" />,
+    title: "Proven Experience and Expertise",
+    description: "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code."
+  },
+  {
+    icon: <Shield className="w-8 h-8 text-emerald-500" />,
+    title: "Security & Intellectual Property (IP)",
+    description: "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code."
+  },
+  {
+    icon: <CheckSquare className="w-8 h-8 text-amber-500" />,
+    title: "Code Reviews",
+    description: "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code."
+  },
+  {
+    icon: <TestTube2 className="w-8 h-8 text-purple-500" />,
+    title: "Quality Assurance & Testing",
+    description: "Unlike other companies, we are a UX first development company. Projects are driven by designers and they make sure design and experiences translate to code."
+  }
+]
 
 export default function Home() {
   return (
@@ -62,7 +96,32 @@ export default function Home() {
         <section id="testimonial"></section>
         <section id="team"></section>
         <section id="blog"></section>
-        <section id="dev"></section>
+        <section id="dev" className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <div className="w-20 h-1 bg-orange-500 mx-auto mb-4" />
+              <h2 className="text-4xl font-bold text-gray-900">Our design and</h2>
+              <h2 className="text-4xl font-bold text-gray-900">Development Approach</h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {developmentApproaches.map((approach, index) => (
+                <Card key={index} className="border-none shadow-sm hover:shadow-md transition-shadow">
+                  <CardContent className="flex items-start gap-4 p-6">
+                    <div className="p-2 bg-white rounded-lg shadow-sm">
+                      {approach.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-xl mb-2">{approach.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{approach.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+        </section>
         <section id="tech-stack"></section>
         <section id="features"></section>
       </main>
