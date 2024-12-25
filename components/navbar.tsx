@@ -9,19 +9,19 @@ const Navbar = () => {
           <Image
             src="/Logo.svg"
             alt="Innoyatra Logo"
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             className="mr-2"
           />
-          <span className="text-xl font-medium text-[#374143]">INNOYATRA</span>
+          <span className="text-xl font-bold text-gray-600">Innoyatra</span>
         </div>
-        <ul className="flex gap-14">
-          <li className="hover:text-gray-600 font-medium">Home</li>
-          <li className="hover:text-gray-600 font-medium">Services</li>
-          <li className="hover:text-gray-600 font-medium">Team</li>
-          <li className="hover:text-gray-600 font-medium">Blog</li>
-          <li className="hover:text-gray-600 font-medium">How it Works</li>
-          <li className="hover:text-gray-600 font-medium">Hire</li>
+        <ul className="text-gray-400 flex gap-12">
+          <li className="hover:text-gray-600">Home</li>
+          <li className="hover:text-gray-600">Services</li>
+          <li className="hover:text-gray-600">Team</li>
+          <li className="hover:text-gray-600">Blog</li>
+          <li className="hover:text-gray-600">How it works</li>
+          <li className="hover:text-gray-600">Hire</li>
         </ul>
         <button className="rounded-2xl bg-orange-500 hover:bg-orange-600 text-white px-7 py-2.5 ">
           Contact Us
