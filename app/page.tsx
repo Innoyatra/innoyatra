@@ -6,11 +6,11 @@ import ServicesSection from "@/components/services";
 export default function Home() {
   return (
     <div>
-      <header>
+      <header className="font-inter">
         <Navbar />
       </header>
       <main>
-        <section id="hero" className="relative overflow-hidden">
+        <section id="hero" className="relative overflow-hidden font-inter">
           <div className="container mx-auto flex items-center justify-between py-20">
             <div className="max-w-lg z-10">
               <h1 className="text-5xl font-normal mb-4">
@@ -26,7 +26,7 @@ export default function Home() {
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               </p>
               <Link href="/">
-                <button className="rounded-lg bg-orange-500 hover:bg-orange-600 text-white px-10 py-3 text-lg font-semibold">
+                <button className="rounded-3xl bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 text-lg font-semibold">
                   Let's get started!
                 </button>
               </Link>
@@ -41,12 +41,12 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+          <div className="absolute bottom-0 left-1/3 transform -translate-x-1/2">
             <Image
-              src="/round.svg"
+              src="Ellipse182.svg"
               alt="Decorative element"
-              width={50}
-              height={50}
+              width={80}
+              height={80}
             />
           </div>
         </section>
