@@ -1,6 +1,8 @@
-import Navbar from "@/components/navbar";
 import Image from 'next/image'
 import Link from "next/link";
+
+import Navbar from "@/components/navbar";
+import ServicesSection from "@/components/services";
 
 export default function Home() {
   return (
@@ -43,22 +45,24 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+          <div className="absolute bottom-0 left-1/3 transform -translate-x-1/2">
             <Image
-              src="/round.svg"
+              src="/Ellipse182.svg"
               alt="Decorative element"
-              width={50}
-              height={50}
+              width={80}
+              height={80}
             />
           </div>
+        </section>
+        <section id="services">
+          <ServicesSection />
+
         </section>
         <section id="companies"></section>
         <section id="testimonial"></section>
         <section id="team"></section>
         <section id="blog"></section>
-        <section id="dev">
-
-        </section>
+        <section id="dev"></section>
         <section id="tech-stack"></section>
         <section id="features"></section>
       </main>
