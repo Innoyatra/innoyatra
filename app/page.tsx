@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Code, Rocket, Shield, CheckSquare, Share2, TestTube2 } from 'lucide-react'
 import Navbar from "@/components/navbar";
 import ServicesSection from "@/components/services";
+import Testimonials from "@/components/testimonials" 
 
 const developmentApproaches = [
   {
@@ -93,7 +94,9 @@ export default function Home() {
 
         </section>
         <section id="companies"></section>
-        <section id="testimonial"></section>
+        <section id="testimonial">
+        <Testimonials /> 
+        </section>
         <section id="team"></section>
         <section id="blog"></section>
         <section id="dev" className="py-20 bg-gray-50">
