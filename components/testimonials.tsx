@@ -3,44 +3,7 @@
 import { useState } from "react"
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import Image from "next/image"
-
-const testimonials = [
-  {
-    image: "https://i.pravatar.cc/150?img=1",
-    name: "Romeena De Silva",
-    role: "Software Engineer",
-    rating: 5,
-    text: "Without any doubt I recommend Alkaline Solutions as one of the best web design and digital marketing agencies. One of the best agencies I've came across so far. Wouldn't be hesitated to introduce their work to someone else."
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=2",
-    name: "Sarah Johnson",
-    role: "Web Developer",
-    rating: 5,
-    text: "The team's expertise and dedication to our project was exceptional. They delivered a website that exceeded our expectations in both design and functionality."
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=3",
-    name: "Imran Khan",
-    role: "Software Engineer",
-    rating: 5,
-    text: "Working with this team has been an absolute pleasure. Their attention to detail and innovative solutions have transformed our online presence completely."
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=4",
-    name: "Michael Chen",
-    role: "Product Manager",
-    rating: 5,
-    text: "Outstanding service from start to finish. The team's communication was excellent, and they delivered our project on time and within budget."
-  },
-  {
-    image: "https://i.pravatar.cc/150?img=5",
-    name: "Emma Wilson",
-    role: "Marketing Director",
-    rating: 5,
-    text: "Their creative approach and technical expertise made our website stand out. I highly recommend their services to anyone looking for top-quality web development."
-  },
-]
+import { testimonials } from "@/lib/constants"
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -48,9 +11,8 @@ function StarRating({ rating }: { rating: number }) {
       {[...Array(5)].map((_, i) => (
         <Star
           key={i}
-          className={`h-4 w-4 ${
-            i < rating ? "fill-orange-400 text-orange-400" : "fill-gray-200 text-gray-200"
-          }`}
+          className={`h-4 w-4 ${i < rating ? "fill-orange-400 text-orange-400" : "fill-gray-200 text-gray-200"
+            }`}
         />
       ))}
     </div>
@@ -66,10 +28,9 @@ function TestimonialCard({ image, name, role, rating, isActive, onClick }: {
   onClick: () => void
 }) {
   return (
-    <div 
-      className={`flex flex-col items-center transition-all duration-300 cursor-pointer ${
-        isActive ? 'opacity-100 scale-110 z-10' : 'opacity-50 scale-100 z-0'
-      }`}
+    <div
+      className={`flex flex-col items-center transition-all duration-300 cursor-pointer ${isActive ? 'opacity-100 scale-110 z-10' : 'opacity-50 scale-100 z-0'
+        }`}
       onClick={onClick}
     >
       <div className="mb-4 h-20 w-20 overflow-hidden rounded-full">
@@ -88,7 +49,7 @@ function TestimonialCard({ image, name, role, rating, isActive, onClick }: {
   )
 }
 
-export default function Testimonials() {
+export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const next = () => {
@@ -130,9 +91,9 @@ export default function Testimonials() {
 
               <div className="flex gap-8">
                 {testimonials.map((testimonial, index) => (
-                  <TestimonialCard 
+                  <TestimonialCard
                     key={index}
-                    {...testimonial} 
+                    {...testimonial}
                     isActive={index === currentIndex}
                     onClick={() => setCurrentIndex(index)}
                   />
