@@ -132,7 +132,7 @@ export default function ServicesSection() {
                                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pb-20">
                                     <Card
                                         className={cn(
-                                            "p-6 h-full bg-white mx-4 transition-all transform",
+                                            "p-6 h-full bg-white mx-4 transition-all transform duration-75",
                                             current === index
                                                 ? "border-orange-500 border-2 translate-y-11 "
                                                 : "border-gray-100"
@@ -255,19 +255,29 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Meet the People Section */}
-                <div className="bg-white ml-32 mb-32 mt-32">
-                    <div className="w-16 h-1 bg-orange-500 mb-8" />
-                    <div className="bg-white space-y-3 mb-12">
-                        <h3 className="text-5xl">{currentContent.meetPeople.title}</h3>
-                        <h2 className="text-5xl font-bold">{currentContent.meetPeople.subtitle}</h2>
-                    </div>
-                    <div className="flex justify-end gap-6 mt-12 mr-28">
-                        <button onClick={prevPage} className="h-14 w-14 rounded-full border-2 border-orange-500 flex items-center justify-center hover:bg-gray-100 transition-colors">
-                            <ArrowRight className="h-6 w-6 rotate-180 text-orange-500" />
-                        </button>
-                        <button onClick={nextPage} className="h-14 w-14 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-500/90 transition-colors">
-                            <ArrowRight className="h-6 w-6 text-white" />
-                        </button>
+                <div className="bg-white mb-32 mt-0">
+                    <div className="w-16 ml-32 h-1 bg-orange-500 mb-8" />
+                    <div className="flex items-center justify-between">
+                        {/* Text Section */}
+                        <div className="space-y-3 ml-32">
+                            <h3 className="text-5xl">{currentContent.meetPeople.title}</h3>
+                            <h2 className="text-5xl font-bold">{currentContent.meetPeople.subtitle}</h2>
+                        </div>
+                        {/* Buttons Section */}
+                        <div className="flex gap-6 items-center mr-96">
+                            <button
+                                onClick={prevPage}
+                                className="h-14 w-14 rounded-full border-2 border-orange-500 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                            >
+                                <ArrowRight className="h-6 w-6 rotate-180 text-orange-500" />
+                            </button>
+                            <button
+                                onClick={nextPage}
+                                className="h-14 w-14 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-500/90 transition-colors"
+                            >
+                                <ArrowRight className="h-6 w-6 text-white" />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
