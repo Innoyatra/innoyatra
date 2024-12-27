@@ -68,6 +68,8 @@ const Carousel = React.forwardRef<
         const [canScrollPrev, setCanScrollPrev] = React.useState(false)
         const [canScrollNext, setCanScrollNext] = React.useState(false)
 
+        const isScrolling = React.useRef(false)
+
         const onSelect = React.useCallback((api: CarouselApi) => {
             if (!api) {
                 return
@@ -78,11 +80,23 @@ const Carousel = React.forwardRef<
         }, [])
 
         const scrollPrev = React.useCallback(() => {
-            api?.scrollPrev()
+            if (!isScrolling.current) {
+                isScrolling.current = true
+                api?.scrollPrev()
+                setTimeout(() => {
+                    isScrolling.current = false
+                }, 300) // Adjust debounce timing if needed
+            }
         }, [api])
 
         const scrollNext = React.useCallback(() => {
-            api?.scrollNext()
+            if (!isScrolling.current) {
+                isScrolling.current = true
+                api?.scrollNext()
+                setTimeout(() => {
+                    isScrolling.current = false
+                }, 300) // Adjust debounce timing if needed
+            }
         }, [api])
 
         const handleKeyDown = React.useCallback(
@@ -96,6 +110,27 @@ const Carousel = React.forwardRef<
                 }
             },
             [scrollPrev, scrollNext]
+        )
+
+        const handleWheel = React.useCallback(
+            (event: React.WheelEvent<HTMLDivElement>) => {
+                if (isScrolling.current) return // Prevent multiple events during debounce
+
+                if (orientation === "horizontal" && Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+                    if (event.deltaX < -30) {
+                        scrollPrev() // Trigger scroll for significant left swipe
+                    } else if (event.deltaX > 30) {
+                        scrollNext() // Trigger scroll for significant right swipe
+                    }
+                } else if (orientation === "vertical" && Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+                    if (event.deltaY < -30) {
+                        scrollPrev() // Trigger scroll for significant up swipe
+                    } else if (event.deltaY > 30) {
+                        scrollNext() // Trigger scroll for significant down swipe
+                    }
+                }
+            },
+            [orientation, scrollPrev, scrollNext]
         )
 
         React.useEffect(() => {
@@ -138,6 +173,7 @@ const Carousel = React.forwardRef<
                 <div
                     ref={ref}
                     onKeyDownCapture={handleKeyDown}
+                    onWheel={handleWheel} // Adjusted: Use debounced wheel handler
                     className={cn("relative", className)}
                     role="region"
                     aria-roledescription="carousel"

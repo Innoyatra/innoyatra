@@ -26,7 +26,7 @@ export default function Home() {
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               </p>
               <Link href="/">
-                <button className="rounded-3xl bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 text-lg font-semibold">
+                <button className="rounded-full bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold">
                   Let's get started!
                 </button>
               </Link>
