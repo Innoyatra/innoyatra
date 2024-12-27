@@ -4,6 +4,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Code, Rocket, Shield, CheckSquare, Share2, TestTube2 } from 'lucide-react'
 import Navbar from "@/components/navbar";
 import ServicesSection from "@/components/services";
+import TechStack from '@/components/tech_stack';
+import DevelopmentProcess from '@/components/DevelopmentProcess';
+//import { useState } from "react";
 
 const developmentApproaches = [
   {
@@ -122,7 +125,12 @@ export default function Home() {
           </div>
 
         </section>
-        <section id="tech-stack"></section>
+        <section id="tech-stack">
+        <TechStack /> 
+        </section>
+        <section id="development-process">
+        <DevelopmentProcess />
+      </section>
         <section id="features"></section>
       </main>
     </div>
