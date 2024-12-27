@@ -1,7 +1,6 @@
-
 import Image from 'next/image'
 
-const Navbar = () => {
+export function Navbar() {
   return (
     <header className="bg-white shadow-md font-inter">
       <nav className="container mx-auto flex items-center justify-between py-5">
@@ -30,5 +29,3 @@ const Navbar = () => {
     </header>
   )
 }
-
-export default Navbar
