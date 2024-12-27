@@ -9,8 +9,8 @@ const Navbar = () => {
           <Image
             src="/Logo.svg"
             alt="Innoyatra Logo"
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             className="mr-2"
           />
           <span className="text-xl font-medium text-[#374143] cursor-pointer">InnoYatra</span>
