@@ -2,6 +2,7 @@ import Navbar from "@/components/navbar";
 import Image from 'next/image'
 import Link from "next/link";
 import ServicesSection from "@/components/services";
+import BlogPage from "@/components/blog";
 
 export default function Home() {
   return (
@@ -56,7 +57,9 @@ export default function Home() {
         <section id="companies"></section>
         <section id="testimonial"></section>
         <section id="team"></section>
-        <section id="blog"></section>
+        <section id="blog">
+        <BlogPage />
+        </section>
         <section id="dev"></section>
         <section id="tech-stack"></section>
         <section id="features"></section>
