@@ -1,0 +1,18 @@
+{
+  level: 'info',
+  message: 'Connecting to MongoDB at mongodb+srv://26vikramnaik:oYAocP2yk14ZzfAJ@innoyatra.zc1bw.mongodb.net/?retryWrites=true&w=majority&appName=innoyatra',
+  service: 'api',
+  timestamp: '2024-12-27T18:31:20.324Z'
+}
+{
+  level: 'info',
+  message: 'Connected to MongoDB at mongodb+srv://26vikramnaik:oYAocP2yk14ZzfAJ@innoyatra.zc1bw.mongodb.net/?retryWrites=true&w=majority&appName=innoyatra',
+  service: 'api',
+  timestamp: '2024-12-27T18:31:22.640Z'
+}
+{
+  level: 'info',
+  message: 'Connecting to MongoDB at mongodb+srv://26vikramnaik:oYAocP2yk14ZzfAJ@innoyatra.zc1bw.mongodb.net/?retryWrites=true&w=majority&appName=innoyatra',
+  service: 'api',
+  timestamp: '2024-12-27T18:31:40.504Z'
+}
