@@ -2,6 +2,7 @@ import { Development } from "@/components/development";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
 import { ServicesSection } from "@/components/services";
+import { Team } from "@/components/team";
 import { Testimonials } from "@/components/testimonials";
 
 export default function Home() {
@@ -12,11 +13,12 @@ export default function Home() {
       </header>
 
       <main>
+        {/* Hero Section */}
         <section id="hero" className="relative overflow-hidden">
           <Hero />
         </section>
 
-        <section id="services">
+        <section id="services" className="bg-white relative font-inter">
           <ServicesSection />
         </section>
 
@@ -26,7 +28,9 @@ export default function Home() {
           <Testimonials />
         </section>
 
-        <section id="team"></section>
+        <section id="team" className="py-20">
+          <Team />
+        </section>
 
         <section id="blog"></section>
 
@@ -42,6 +46,6 @@ export default function Home() {
       <footer>
       </footer>
     </div>
-  );
+  )
 }
 

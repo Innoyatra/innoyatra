@@ -157,3 +157,80 @@ export const testimonials = [
     text: "Their creative approach and technical expertise made our website stand out. I highly recommend their services to anyone looking for top-quality web development."
   },
 ]
+
+export const teamMembers = [
+  {
+    name: "Dr Lokesh MR",
+    role: "Mentor",
+    image: "/lokesh 1.svg",
+    description: "At PRS, we understand that finding the right job can be challenging. That's why we offer a range of services designed to support."
+  },
+  {
+    name: "Durgesh AP",
+    role: "Member",
+    image: "/durgesh.svg",
+    description: "John is a highly experienced career coach with a proven track record of helping clients achieve their goals."
+  },
+  {
+    name: "Kishan Bhandary",
+    role: "Member",
+    image: "/kishan1.svg",
+    description: "At PRS, we understand that finding the right job can be challenging. That's why we offer a range of services designed to support."
+  },
+  {
+    name: "Lavanya",
+    role: "Member",
+    image: "/lavanya.svg",
+    description: "Bridging business needs with technical solutions, Emily shapes our product strategy and roadmap."
+  },
+  {
+    name: "Keerthana",
+    role: "Member",
+    image: "/keer.svg",
+    description: "Leading our technical initiatives with 10+ years in software architecture and cloud solutions."
+  },
+  {
+    name: "Krithi",
+    role: "Member",
+    image: "/krithi.svg",
+    description: "Award-winning designer with a passion for creating intuitive and engaging user experiences."
+  },
+  {
+    name: "Neekshith",
+    role: "Member",
+    image: "/neekshith.svg",
+    description: "Full-stack expert specializing in React and Node.js, driving our technical excellence forward."
+  },
+  {
+    name: "Muaz Ismail ",
+    role: "Member",
+    image: "/muazz.svg",
+    description: "Bridging business needs with technical solutions, Emily shapes our product strategy and roadmap."
+  },
+  {
+    name: "Shaman Krishna K",
+    role: "Member",
+    image: "/shaman.svg",
+    description: "Automation expert ensuring smooth deployment pipelines and robust infrastructure."
+  },
+  {
+    name: "Dhyan P Amin",
+    role: "Member",
+    image: "/dhyan.svg",
+    description: "Automation expert ensuring smooth deployment pipelines and robust infrastructure."
+  }, {
+    name: "Anirudh Rao",
+    role: "Member",
+    image: "/anirudh.svg",
+    description: "Automation expert ensuring smooth deployment pipelines and robust infrastructure."
+  },
+
+  {
+    name: "Kaushal G ",
+    role: "Member",
+    image: "/kaushal.svg",
+    description: "Ensuring top-notch quality through comprehensive testing strategies and automation."
+  }
+  
+
+]
