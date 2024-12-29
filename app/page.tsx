@@ -1,3 +1,4 @@
+import { BlogPage } from "@/components/blog";
 import { Development } from "@/components/development";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
@@ -13,7 +14,6 @@ export default function Home() {
       </header>
 
       <main>
-        {/* Hero Section */}
         <section id="hero" className="relative overflow-hidden">
           <Hero />
         </section>
@@ -32,7 +32,9 @@ export default function Home() {
           <Team />
         </section>
 
-        <section id="blog"></section>
+        <section id="blog">
+          <BlogPage />
+        </section>
 
         <section id="dev" className="py-20 bg-gray-50">
           <Development />
