@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 
-export default function BlogPage() {
+export function BlogPage() {
   return (
     <main className="container mx-auto px-4 py-12 space-y-24">
       {/* Header Section */}
@@ -26,7 +26,7 @@ export default function BlogPage() {
           <div className="relative pl-6 py-4">
             <div className="absolute left-0 top-0 w-1.5 h-full bg-orange-500" />
             <p className="text-lg italic text-gray-500">
-              "Senform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules"
+              &ldquo;Senform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules&rdquo;
             </p>
           </div>
           <Link href="/ceo-profile">
@@ -82,7 +82,7 @@ export default function BlogPage() {
           <div className="relative pl-6 py-4">
             <div className="absolute left-0 top-0 w-1.5 h-full bg-orange-500" />
             <p className="text-lg italic text-gray-500">
-              "Senform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules"
+              &ldquo;Senform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules&rdquo;
             </p>
           </div>
           <button className="flex items-center gap-4 pt-4 transition-transform hover:scale-105">
@@ -112,7 +112,7 @@ export default function BlogPage() {
           <div className="relative pl-6 py-4">
             <div className="absolute left-0 top-0 w-1.5 h-full bg-orange-500" />
             <p className="text-lg italic text-gray-500">
-              "Senform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules"
+              &ldquo;Senform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules&rdquo;
             </p>
           </div>
           <button className="flex items-center gap-4 pt-4 transition-transform hover:scale-105">
