@@ -8,7 +8,7 @@ import { teamMembers } from '@/lib/constants'
 
 export function Team() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [totalPages, setTotalPages] = useState(Math.ceil((teamMembers.length - 2) / 1))
+  const [totalPages] = useState(Math.ceil((teamMembers.length - 2) / 1))
   const [currentPage, setCurrentPage] = useState(1)
 
   const getCurrentMembers = () => {
