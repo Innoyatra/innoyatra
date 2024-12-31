@@ -3,6 +3,8 @@ import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
 import { ServicesSection } from "@/components/services";
 import { Testimonials } from "@/components/testimonials";
+import FeaturedResources from "@/components/featured-resources";
+
 
 export default function Home() {
   return (
@@ -33,12 +35,12 @@ export default function Home() {
         <section id="dev" className="py-20 bg-gray-50">
           <Development />
         </section>
-
+        <section id="featured-resources" className="py-20 bg-white">
+          <FeaturedResources />
+        </section>
         <section id="tech-stack"></section>
-
         <section id="features"></section>
       </main>
-
       <footer>
       </footer>
     </div>
