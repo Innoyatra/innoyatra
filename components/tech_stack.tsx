@@ -1,39 +1,57 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { cn } from "@/lib/utils"
+import {
+  NodeIcon,
+  PhpIcon,
+  PythonIcon,
+  DotNetIcon,
+  JavaIcon,
+  ReactIcon,
+  AngularIcon,
+  VueIcon,
+  MySQLIcon,
+  MongoDBIcon,
+  PostgreSQLIcon,
+  WordPressIcon,
+  DrupalIcon,
+  AWSIcon,
+  AzureIcon,
+  DockerIcon,
+  KubernetesIcon
+} from './tech-icons'
 
-// Define the technology categories and their items
+// Define the technology categories and their items with icons
 const techCategories = {
   Backend: [
-    { name: 'Node.js', logo: '/nodejs-logo.svg' },
-    { name: 'PHP', logo: '/php-logo.svg' },
-    { name: 'Python', logo: '/python-logo.svg' },
-    { name: '.NET', logo: '/dotnet-logo.svg' },
-    { name: 'Java', logo: '/java-logo.svg' },
+    { name: 'Node.js', icon: NodeIcon },
+    { name: 'PHP', icon: PhpIcon },
+    { name: 'Python', icon: PythonIcon },
+    { name: '.NET', icon: DotNetIcon },
+    { name: 'Java', icon: JavaIcon },
   ],
   Frontend: [
-    { name: 'React', logo: '/react-logo.svg' },
-    { name: 'Angular', logo: '/angular-logo.svg' },
-    { name: 'Vue', logo: '/vue-logo.svg' },
+    { name: 'React', icon: ReactIcon },
+    { name: 'Angular', icon: AngularIcon },
+    { name: 'Vue', icon: VueIcon },
   ],
   Databases: [
-    { name: 'MySQL', logo: '/mysql-logo.svg' },
-    { name: 'MongoDB', logo: '/mongodb-logo.svg' },
-    { name: 'PostgreSQL', logo: '/postgresql-logo.svg' },
+    { name: 'MySQL', icon: MySQLIcon },
+    { name: 'MongoDB', icon: MongoDBIcon },
+    { name: 'PostgreSQL', icon: PostgreSQLIcon },
   ],
   CMS: [
-    { name: 'WordPress', logo: '/wordpress-logo.svg' },
-    { name: 'Drupal', logo: '/drupal-logo.svg' },
+    { name: 'WordPress', icon: WordPressIcon },
+    { name: 'Drupal', icon: DrupalIcon },
   ],
   CloudTesting: [
-    { name: 'AWS', logo: '/aws-logo.svg' },
-    { name: 'Azure', logo: '/azure-logo.svg' },
+    { name: 'AWS', icon: AWSIcon },
+    { name: 'Azure', icon: AzureIcon },
   ],
   DevOps: [
-    { name: 'Docker', logo: '/docker-logo.svg' },
-    { name: 'Kubernetes', logo: '/kubernetes-logo.svg' },
+    { name: 'Docker', icon: DockerIcon },
+    { name: 'Kubernetes', icon: KubernetesIcon },
   ],
 }
 
@@ -74,13 +92,8 @@ export default function TechStack() {
               key={tech.name}
               className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow w-full h-full max-w-[200px] aspect-square"
             >
-              <div className="relative w-full h-1/2 flex items-center justify-center mb-4">
-                <Image
-                  src={tech.logo}
-                  alt={`${tech.name} logo`}
-                  fill
-                  className="object-contain p-4"
-                />
+              <div className="flex items-center justify-center mb-4">
+                <tech.icon className="w-12 h-12 text-orange-500" />
               </div>
               <span className="text-sm font-medium text-gray-700 text-center">{tech.name}</span>
             </div>
