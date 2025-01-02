@@ -7,7 +7,14 @@
 html {
   font-family: 'Inter', sans-serif;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 }

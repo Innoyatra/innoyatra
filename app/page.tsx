@@ -5,6 +5,9 @@ import { Navbar } from "@/components/navbar";
 import { ServicesSection } from "@/components/services";
 import { Team } from "@/components/team";
 import { Testimonials } from "@/components/testimonials";
+import FeaturedResources from "@/components/featured-resources";
+import TechStack from '@/components/tech_stack';
+import DevelopmentProcess from '@/components/DevelopmentProcess';
 
 export default function Home() {
   return (
@@ -39,12 +42,17 @@ export default function Home() {
         <section id="dev" className="py-20 bg-gray-50">
           <Development />
         </section>
-
-        <section id="tech-stack"></section>
-
+        <section id="featured-resources" className="py-20 bg-white">
+          <FeaturedResources />
+        </section>
+        <section id="tech-stack">
+          <TechStack />
+        </section>
+        <section id="development-process">
+          <DevelopmentProcess />
+        </section>
         <section id="features"></section>
       </main>
-
       <footer>
       </footer>
     </div>
