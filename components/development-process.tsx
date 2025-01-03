@@ -1,4 +1,7 @@
-import { Trophy } from 'lucide-react';
+'use client'
+
+import { Trophy } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const developmentSteps = [
   {
@@ -37,17 +40,33 @@ const developmentSteps = [
     description: "We divide the implementation process into several checkpoints rather than a single deadline.",
     position: "bottom"
   }
-];
+]
 
-export default function DevelopmentProcess() {
+export function DevelopmentProcess() {
   return (
-    <div className="py-20 bg-white">
+    <div className="py-4 bg-white">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="w-20 h-1 bg-orange-500 mx-auto mb-4" />
-          <h2 className="text-4xl font-bold text-gray-700">How development</h2>
-          <h2 className="text-4xl font-bold text-gray-900">through Alcaline works</h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-bold text-gray-700"
+            viewport={{ once: true }}
+          >
+            How development
+          </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-bold text-gray-900"
+            viewport={{ once: true }}
+          >
+            through Alcaline works
+          </motion.h2>
         </div>
 
         {/* Timeline and Steps */}
@@ -56,13 +75,21 @@ export default function DevelopmentProcess() {
           <div className="hidden md:block absolute top-1/2 left-8 right-8 h-[2px] bg-orange-500" />
 
           {/* Steps Grid */}
-          <div className="relative space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8">
+          <motion.div
+            className="relative space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
             {developmentSteps.map((step, index) => (
-              <div 
-                key={index} 
-                className={`relative ${
-                  step.position === 'bottom' ? 'md:mt-32' : ''
-                }`}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: step.position === 'top' ? -20 : 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 * index }}
+                className={`relative ${step.position === 'bottom' ? 'md:mt-32' : ''}`}
+                viewport={{ once: true }}
               >
                 <div className="bg-white border border-gray-100 rounded-lg p-6">
                   <div className="flex flex-col items-start gap-2">
@@ -73,27 +100,34 @@ export default function DevelopmentProcess() {
                     <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
                   </div>
                 </div>
-                
+
                 {/* Vertical Connection Line */}
-                <div 
+                <div
                   className="hidden md:block absolute left-[10rem] w-[2px] bg-orange-500"
                   style={{
                     height: '2rem',
-                    ...(step.position === 'top' 
-                      ? { top: '100%' } 
+                    ...(step.position === 'top'
+                      ? { top: '100%' }
                       : { bottom: '100%' })
                   }}
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Trophy Icon at the End */}
-          <div className="hidden md:block absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="hidden md:block absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2"
+            viewport={{ once: true }}
+          >
             <Trophy className="w-8 h-8 text-orange-500" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
-  );
+  )
 }
+
