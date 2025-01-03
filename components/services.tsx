@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, Play } from "lucide-react";
+import { motion } from "framer-motion"
 
 import { Card } from "@/components/ui/card"
 import {
@@ -13,12 +12,49 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel"
 import { cn } from "@/lib/utils"
-import { pageContents, services } from "@/lib/constants";
+import { pageContents, services } from "@/lib/constants"
+import ContentSection from "./content"
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.4, 0, 0.2, 1]
+    }
+  }
+}
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+}
+
+const scaleIn = {
+  hidden: { scale: 0.95, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1]
+    }
+  }
+}
 
 export function ServicesSection() {
   const [current, setCurrent] = useState(0)
   const [api, setApi] = useState<CarouselApi>()
   const [currentPage, setCurrentPage] = useState(0)
+  const [autoPlay, setAutoPlay] = useState(true)
 
   const nextPage = () => {
     setCurrentPage((prev) => (prev + 1) % pageContents.length)
@@ -31,64 +67,104 @@ export function ServicesSection() {
   useEffect(() => {
     if (!api) return
 
-    api.on("select", () => {
+    const onSelect = () => {
       setCurrent(api.selectedScrollSnap())
-    })
+    }
+    api.on("select", onSelect)
+
+    return () => {
+      api.off("select", onSelect)
+    }
   }, [api])
 
+  useEffect(() => {
+    if (!api || !autoPlay) return
+
+    const interval = setInterval(() => {
+      api.scrollNext()
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [autoPlay])
+
+  const handleMouseEnter = () => setAutoPlay(false)
+  const handleMouseLeave = () => setAutoPlay(true)
 
   const currentContent = pageContents[currentPage]
 
   return (
     <>
-      <div className="relative py-16 bg-[#F9F9FF] border-t-2 shadow-md">
-        <h2 className="text-3xl text-gray-700 font-bold text-center mb-12">Services we offer</h2>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="relative py-16 bg-[#F9F9FF] border-t-2 shadow-md"
+      >
+        <motion.h2
+          variants={fadeInUp}
+          className="text-3xl text-gray-700 font-bold text-center mb-12"
+        >
+          Services we offer
+        </motion.h2>
 
-        <div className="relative w-full">
+        <motion.div
+          variants={staggerContainer}
+          className="relative w-full"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <Carousel
             opts={{
               align: "center",
               loop: true,
+              skipSnaps: false
             }}
             className="w-full"
             setApi={setApi}
           >
             <CarouselContent>
               {services.map((service, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pb-20">
-                  <Card
-                    className={cn(
-                      "p-6 h-full bg-white mx-4 transition-all transform duration-75",
-                      current === index
-                        ? "border-orange-500 border-2 translate-y-11 "
-                        : "border-gray-100"
-                    )}
+                <CarouselItem key={index} className="basis-5/6 h-min md:h-auto md:basis-1/2 lg:basis-1/3 pb-20">
+                  <motion.div
+                    variants={scaleIn}
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <div
-                      id="orange-circle-border"
+                    <Card
                       className={cn(
-                        "w-12 h-12 rounded-full flex items-center justify-center mb-4",
-                        current === index ? "border-orange-500 border-2" : "border-gray-300 border-2"
+                        "p-6 h-full bg-white md:mx-4 transition-all transform duration-75",
+                        current === index
+                          ? "border-orange-500 border-2 translate-y-11"
+                          : "border-gray-100"
                       )}
                     >
-                      {service.icon}
-                    </div>
-                    <h3
-                      id="orange-title-text"
-                      className={cn(
-                        "text-xl font-semibold mb-2 text-gray-700",
-                        current === index ? "text-orange-500" : ""
-                      )}
-                    >
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-700">{service.description}</p>
-                  </Card>
+                      <motion.div
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                        className={cn(
+                          "w-12 h-12 rounded-full flex items-center justify-center mb-4",
+                          current === index ? "border-orange-500 border-2" : "border-gray-300 border-2"
+                        )}
+                      >
+                        {service.icon}
+                      </motion.div>
+                      <h3
+                        className={cn(
+                          "text-xl font-semibold mb-2 text-gray-700",
+                          current === index ? "text-orange-500" : ""
+                        )}
+                      >
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-700">{service.description}</p>
+                    </Card>
+                  </motion.div>
                 </CarouselItem>
               ))}
             </CarouselContent>
+
             <div className="flex flex-col items-center mt-8">
-              <div className="flex gap-2 justify-center mb-4">
+              <div className="hidden md:flex gap-2 justify-center mb-4">
                 {services.map((_, index) => (
                   <button
                     key={index}
@@ -118,10 +194,15 @@ export function ServicesSection() {
               </div>
             </div>
           </Carousel>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="ml-40 relative">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="ml-40 relative"
+      >
         <Image
           src="HalfEclipse.svg"
           alt="Decorative circle"
@@ -129,81 +210,9 @@ export function ServicesSection() {
           height={80}
           className="absolute -left-10"
         />
-      </div>
+      </motion.div>
 
-      <div>
-        <div className="grid grid-cols-1 bg-white lg:grid-cols-2 gap-16 items-center mt-32">
-          <div className="ml-32 space-y-8">
-            <div className="w-16 h-1 bg-orange-500" />
-            <h2 className="text-5xl font-medium space-y-3">
-              <div>{currentContent.leadingCompanies.title}</div>
-              <div className="font-bold">{currentContent.leadingCompanies.subtitle}</div>
-            </h2>
-            <p
-              className="text-gray-600 leading-relaxed text-lg mr-16"
-              dangerouslySetInnerHTML={{ __html: currentContent.leadingCompanies.description }}
-            />
-            <Link
-              href="#"
-              className="inline-flex items-center text-orange-500 hover:opacity-90 transition-opacity text-lg duration-300"
-            >
-              {currentContent.leadingCompanies.linkText}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-          <div className="mr-32 mt-32 relative aspect-video">
-            <Image
-              src="/Ellipse181.svg"
-              alt="Decorative circle"
-              width={80}
-              height={80}
-              className="absolute -top-10 -left-10"
-            />
-            <Image
-              src="/Ellipse181.svg"
-              alt="Decorative circle"
-              width={80}
-              height={80}
-              className="absolute -bottom-10 -right-10"
-            />
-            <Image
-              src={currentContent.leadingCompanies.image}
-              alt="Team working together"
-              fill
-              className="object-cover rounded-2xl"
-            />
-            <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 rounded-full p-5 hover:bg-orange-600 transition-colors z-20">
-              <Play className="h-8 w-8 text-white" fill="white" />
-            </button>
-          </div>
-        </div>
-
-        <div className="bg-white mb-32 mt-0">
-          <div className="w-16 ml-32 h-1 bg-orange-500 mb-8" />
-          <div className="flex items-center justify-between">
-            {/* Text Section */}
-            <div className="space-y-3 ml-32">
-              <h3 className="text-5xl">{currentContent.meetPeople.title}</h3>
-              <h2 className="text-5xl pb-10 font-bold">{currentContent.meetPeople.subtitle}</h2>
-            </div>
-            {/* Buttons Section */}
-            <div className="flex gap-6 items-center mr-96">
-              <button
-                onClick={prevPage}
-                className="h-14 w-14 rounded-full border-2 border-orange-500 flex items-center justify-center hover:bg-gray-100 transition-colors"
-              >
-                <ArrowRight className="h-6 w-6 rotate-180 text-orange-500" />
-              </button>
-              <button
-                onClick={nextPage}
-                className="h-14 w-14 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-500/90 transition-colors"
-              >
-                <ArrowRight className="h-6 w-6 text-white" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ContentSection currentContent={currentContent} nextPage={nextPage} prevPage={prevPage} />
     </>
   )
 }
