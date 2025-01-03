@@ -78,7 +78,7 @@ export function Navbar() {
         </motion.div>
         
         <ul className="lg:flex gap-1 hidden mr-auto">
-          {['home', 'services', 'team', 'blog', 'how-it-Works', 'hire'].map((item, index) => (
+          {['home', 'services', 'team', 'blog', 'how-it-Works', 'hire'].map((item) => (
             <motion.li
               key={item}
               variants={navItem}

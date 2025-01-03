@@ -97,6 +97,8 @@ export function Testimonials() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
+  console.log(isVisible)
+
   const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length)
   const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
 
